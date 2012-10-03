@@ -10,7 +10,7 @@
 	URL: http://code.google.com/p/html5slides/
 */
 
-var PERMANENT_URL_PREFIX = 'http://localhost/talks/2012/zeptojs/';
+var PERMANENT_URL_PREFIX = 'http://github.luiztiago.com/talks/2012/zeptojs/';
 
 var SLIDE_CLASSES = ['far-past', 'past', 'current', 'next', 'far-next'];
 
