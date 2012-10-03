@@ -2,4 +2,4 @@
 
 ## 2012
 
-### 1Â Open Meeting - Pernambuco.JS
+### [1st Open Meeting - Pernambuco.JS](http://luiztiago.github.com/talks/2012/1st-open-meeting-pernambucojs/)
