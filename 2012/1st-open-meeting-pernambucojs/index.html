@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<!--
+	Google HTML5 slide template
+
+	Authors: Luke Mahé (code)
+					 Marcin Wichary (code and design)
+					 
+					 Dominic Mazzoni (browser compatibility)
+					 Charles Chen (ChromeVox support)
+
+	URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>Zepto.JS - Fazendo "mais com menos"</title>
+
+		<meta charset="utf-8">
+		<script src="assets/scripts/slides.js"></script>
+	</head>
+	
+	<style>
+		/* Your individual styles here, or just use inline styles if that’s
+			 what you want. */
+		
+		
+	</style>
+
+	<body style="display: none">
+
+		<section class="slides layout-regular template-default">
+			
+			<!-- Your slides (<article>s) go here. Delete or comment out the
+					 slides below. -->
+				
+			<article class="start bg blue">
+				<h1>Zepto.JS</h1>
+				<h2>Fazendo "mais com menos"</h2>
+			</article>
+
+			<article>
+				<h1>Luiz Tiago</h1>
+				<img src="assets/slides/luiztiago.jpg" class="sd luiztiago" style="position: absolute; bottom: 50px; right: 50px;" />
+				<ul>
+					<li>Front-end Manager @ MGR Tecnologia </li>
+					<li>Pós-graduado em Desenvolvimento Mobile @ CESAR </li>
+					<li>Graduado em Sistemas para Internet @ Marista</li>
+					<li>Co-fundador do jQuery Brasil &amp; Pernambuco.JS </li>
+					<li>And more things...</li>
+				</ul>
+			</article>
+			
+			<article>
+				<h1>
+					Zepto.JS
+				</h1>
+				<ul class="build">
+					<li>
+						"Zepto is a <strong>minimalist</strong> JavaScript <strong>library</strong> for <strong>modern browsers</strong> with a largely jQuery-compatible API."
+					</li>
+					<li>
+						"If you use jQuery, you already know how to use Zepto."
+					</li>
+				</ul>
+
+				<div class="build graph-comparison-with-jquery">
+					<img src="assets/slides/graph-comparison-with-jquery.png" style="position: absolute; bottom: 50px; left: 50%; margin-left: -250px; background: #fff; padding: 10px;" class="rd10 sd" />
+				</div>
+
+			</article>
+
+			<article>
+				<h1>Target platforms</h1>
+				<ul>
+					<li>Safari 5+ (desktop)</li>
+					<li>Chrome 5+ (desktop)</li>
+					<li>Mozilla Firefox 4+</li>
+					<li>iOS 4+ Safari</li>
+					<li>Android 2.2+ Browser</li>
+					<li>Other WebKit-based browsers/runtimes</li>
+					<li>BlackBerry Tablet OS 1.0.7+ Browser</li>
+					<li>Opera 10+</li>
+					<li class="through">Internet Explorer 6+</li>
+					<li>And more things...</li>
+				</ul>
+				<div class="build meme-notie" style="position: absolute; bottom: 50px; right: 50px;">
+					<img src="assets/slides/meme-notie.gif" />
+				</div>
+			</article>
+
+			<article>
+				<h1>jQuery - $()</h1>
+				<pre>
+					
+var match, elem, ret, doc;
+
+// Handle $(""), $(null), $(undefined), $(false)
+if ( !selector ) {
+    return this;
+}
+
+// Handle $(DOMElement)
+if ( selector.nodeType ) {
+    this.context = this[0] = selector;
+    this.length = 1;
+    return this;
+}
+
+// Handle HTML strings
+if ( typeof selector === "string" ) {
+    if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
+        // Assume that strings that start and end with <> are HTML and skip the regex check
+        match = [ null, selector, null ];
+
+    } else {
+        match = rquickExpr.exec( selector );
+    }
+
+    // Match html or make sure no context is specified for #id
+    if ( match && (match[1] || !context) ) {
+
+        // HANDLE: $(html) -> $(array)
+        if ( match[1] ) {
+            context = context instanceof jQuery ? context[0] : context;
+            doc = ( context && context.nodeType ? context.ownerDocument || context : document );
+
+            // scripts is true for back-compat
+            selector = jQuery.parseHTML( match[1], doc, true );
+            if ( rsingleTag.test( match[1] ) && jQuery.isPlainObject( context ) ) {
+                this.attr.call( selector, context, true );
+            }
+
+            return jQuery.merge( this, selector );
+
+        // HANDLE: $(#id)
+        } else {
+            elem = document.getElementById( match[2] );
+
+            // Check parentNode to catch when Blackberry 4.6 returns
+            // nodes that are no longer in the document #6963
+            if ( elem && elem.parentNode ) {
+                // Handle the case where IE and Opera return items
+                // by name instead of ID
+                if ( elem.id !== match[2] ) {
+                    return rootjQuery.find( selector );
+                }
+
+                // Otherwise, we inject the element directly into the jQuery object
+                this.length = 1;
+                this[0] = elem;
+            }
+
+            this.context = document;
+            this.selector = selector;
+            return this;
+        }
+
+    // HANDLE: $(expr, $(...))
+    } else if ( !context || context.jquery ) {
+        return ( context || rootjQuery ).find( selector );
+
+    // HANDLE: $(expr, context)
+    // (which is just equivalent to: $(context).find(expr)
+    } else {
+        return this.constructor( context ).find( selector );
+    }
+
+// HANDLE: $(function)
+// Shortcut for document ready
+} else if ( jQuery.isFunction( selector ) ) {
+    return rootjQuery.ready( selector );
+}
+
+if ( selector.selector !== undefined ) {
+    this.selector = selector.selector;
+    this.context = selector.context;
+}
+
+return jQuery.makeArray( selector, this );
+
+				</pre>
+			</article>
+
+			<article>
+				
+				<h1>Zepto.JS - $()</h1>
+
+				<pre>
+return document.querySelectorAll(context)
+				</pre>
+
+				<div class="build">
+					<div>
+						<img src="assets/slides/meme-jogando-mesa.gif" style="text-align: center; position: absolute; bottom: 0px; right: 0px;" />
+						<h2>Noooooossa, <br />é muito mais rápido!</h2>
+					</div>
+				</div>
+
+			</article>
+
+			<article class="iframe-with-title">
+				<h1>Será?</h1>
+				<iframe src="http://jsperf.com/getelementbyid-vs-queryselector-vs-jquery"></iframe>
+				<p class="source"><a href="http://jsperf.com/getelementbyid-vs-queryselector-vs-jquery">http://jsperf.com/getelementbyid-vs-queryselector-vs-jquery</a></p>
+			</article>
+
+			<article>
+				<h1>jQuery</h1>
+				<ul class="build">
+					<li>Muito código<br /><span class="small">maior tempo para download</span></li>
+					<li>Cache em dispositivos mobile não são bons</li>
+					<li>Boa parte do código existe para browsers<br />que você não precisa mais dar suporte
+						<img src="assets/slides/troll-ie6.png" style="position: absolute; right: 50px; margin-top: -80px;"></li>
+					<li>Funcionalidades nativas são duplicadas<br /><span class="small">(ex.: suporte ao JSON e animações)</span></li>
+					<li><strong>Você normalmente não usa nem 20% do que ele possui!</strong></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>jQuery - Um pouco sobre o futuro</h1>
+				<ul class="build">
+					<li><strong>jQuery 1.9 (início de 2013)</strong> | Removerão várias interfaces existentes na versão 1.8. Algumas delas ficarão como plugins ou APIs alternativas, apoiadas pelo jQuery</li>
+					<li><strong>jQuery 1.9.x (meados de 2013)</strong> | Correções</li>
+					<li><strong>jQuery 2.0 (início de 2013, pouco depois<br />
+					 da 1.9)</strong> | Apoiará as mesmas APIs como <br />
+					 jQuery 1.9, mas sem o suporte aos <br />
+					 <strong>IEs 6, 7 e 8</strong>. <img src="assets/slides/inri-cristo.jpg" style="position: absolute; right: 50px; bottom: 50px;"></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Zepto.JS</h1>
+				<ul class="build">
+					<li>Código muito pequeno</li>
+					<li>Fácil de usar a API para tarefas comuns de manipulação do DOM</li>
+					<li>Fácil de extender e customizar</li>
+					<li>Muito indicado para Mobile</li>
+					<li>Não precisa de suporte a <strong>coisas que dizem ser browsers</strong> #troll</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Zepto.JS</h1>
+				<h3>Core</h3>
+				<ul>
+					<li>$.each, $.extend, $.map, $.trim</li>
+					<li>$.inArray, $.isArray, $.isFunction, $.isPlainObject</li>
+					<li>after(), before(), append(), appendTo(), insertAfter(), insertBefore()</li>
+					<li>attr(), removeAttr(), data(), last(), next(), size(), prev(), prop()</li>
+					<li>addClass(), css(), hasClass(), removeClass(), toggleClass()</li>
+					<li>each(), forEach(), filter(), index(), map(), indexOf()</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Zepto.JS</h1>
+				<h3>Events</h3>
+				<ul>
+					<li>bind(), unbind()</li>
+					<li>delegate(), undelegate()</li>
+					<li>on(), off()</li>
+					<li>live(), die()</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Zepto.JS</h1>
+				<h3>Ajax</h3>
+				<ul>
+					<li>$.ajax()</li>
+					<li>$.ajaxJSONP()</li>
+					<li>$.ajaxSettings()</li>
+					<li>$.get()</li>
+					<li>$.getJSON()</li>
+					<li>$.param()</li>
+					<li>$.post()</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Zepto.JS</h1>
+				<h3>Effects</h3>
+				<ul class="build">
+					<li>animate()</li>
+					<li class="through">fadeIn(), fadeOut(), fadeTo(), fadeToggle()</li>
+					<li class="through">hide(), show(), toggle()</li>
+					<li class="through">slideUp(), slideDown(), slideToggle()</li>
+				</ul>
+			</article>
+
+			<article class="keepcalm"></article>
+
+			<!-- <article class="bg blue">
+				<h1>Faça mais...</h1>
+			</article> -->
+
+			<article>
+				<h1>$.fadeOut()</h1>
+				<div class="build">
+					<p>Eu queria muito usar o fadeOut :(</p>
+					<p>fadeOut é muito legal :(</p>
+					<p>fadeOut parece Flash, po!</p>
+					<p>Do it! :)</p>
+					<pre>
+;(function($){
+    $.extend($.fn, {
+        fadeOut: function(){
+            return this.animate({
+                opacity: 0
+            }, 5000, 'linear');
+        }
+    })
+})(Zepto)
+					</pre>
+	            </div>
+			</article>
+
+			<article class="iframe-with-title">
+				<h1>$.fadeOut()</h1>
+				<iframe src="fadeOut.html"></iframe>
+			</article>
+
+			<article>
+				<h1>$.slideUp()</h1>
+				<div class="build">
+					<p>Ah o fade é fácil, eu queria slideUp :(</p>
+					<p>slideUp é muito legal :(</p>
+					<p>Do it! :)</p>
+					<pre>
+;(function($){
+    $.extend($.fn, {
+        slideUp: function(){
+            this.css('overflow','hidden');
+            return this.animate({
+                opacity: 0
+            }, 5000, 'linear');
+        }
+    })
+})(Zepto)
+					</pre>
+	            </div>
+			</article>
+
+			<article class="iframe-with-title">
+				<h1>$.slideUp()</h1>
+				<iframe src="slideUp.html"></iframe>
+			</article>
+
+			<article class="bg blue">
+				<h1>Leia o código!</h1>
+			</article>
+
+			<article>
+				<h1>replaceWith()</h1>
+				<pre>
+replaceWith: function(newContent){
+    return this.before(newContent).remove()
+}
+				</pre>
+			</article>
+
+			<article>
+				<h1>indexOf()</h1>
+				<pre>
+index: function(element){
+    return element ? this.indexOf($(element)[0]) : 
+    this.parent().children().indexOf(this[0])
+}
+				</pre>
+			</article>
+
+			<article>
+				<h1>$.get()</h1>
+				<pre>
+$.get = function(url, success){ 
+    return $.ajax({ url: url, success: success }) 
+}
+				</pre>
+			</article>
+
+			<article>
+				<h1>$.post()</h1>
+				<pre>
+$.post = function(url, data, success, dataType){
+    if ($.isFunction(data)) {
+    	dataType = dataType || success, 
+    	success = data
+    	data = null
+    }
+    return $.ajax({ type: 'POST', url: url, data: data, success: success, dataType: dataType })
+}
+				</pre>
+			</article>
+
+			<article>
+				<h1>$.getJSON()</h1>
+				<pre>
+$.getJSON = function(url, success){
+    return $.ajax({ url: url, success: success, dataType: 'json' })
+}
+				</pre>
+			</article>
+
+			<article>
+				<h1>Touch events</h1>
+				<h3>$.swipe() / $.swipeLeft()<br />
+					$.swipeRight()</h3>
+				<ul class="build">
+					<img src="assets/slides/swipe-left.png" style="position: absolute; right: 50px; top: 50px;" />
+					<li>Hey, isso não é nativo <br /> no jQuery!</li>
+					<li>Isso funciona para mobile</li>
+					<li>jQuery não é voltado para isto</li>
+				</ul>
+			</article>
+
+			<article class="iframe-with-title">
+				<h1>Zepto.JS - Documentation</h1>
+				<iframe src="http://zeptojs.com" frameborder="0"></iframe>
+			</article>
+
+			<article>
+				<h1>Micro-libraries / Micro-frameworks</h1>
+				<ul class="build">
+					<li><strong>Fácil de entender</strong> o código e <em>forkar</em></li>
+					<li>Baixa e executa <strong>mais rápido</strong></li>
+					<li><strong>Menos bugs</strong> (menos código e excessões)</li>
+					<li>... e você aprenderá realmente <strong>como Javascript funciona!</strong></li>
+				</ul>
+			</article>
+
+			<article class="iframe-with-title">
+				<h1>Micro.JS</h1>
+				<iframe src="http://microjs.com" frameborder="0"></iframe>
+			</article>
+
+			<article class="pernambuco">
+				<h1>Obrigado, Pernambuco.JS!</h1>
+				<ul>
+					<li><a href="http://www.twitter.com/luiztiago">@luiztiago</a></li>
+					<li><a href="http://www.luiztiago.com">www.luiztiago.com</a></li>
+					<li><a href="mailto:luiztiago@luiztiago.com">luiztiago@luiztiago.com</a></li>
+				</ul>
+				<img src="assets/slides/pejs.png" style="position: absolute; bottom: 50px; right: 50px;" />
+			</article>
+
+		</section>
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Archivo+Narrow:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	</body>
+</html>

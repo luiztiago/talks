@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		* { margin: 0; padding: 0 }
+	</style>
+	<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
+	<script>
+		;(function($){
+			$.extend($.fn, {
+				fadeOut: function(){
+					return this.animate({
+						opacity: 0
+					}, 5000, 'linear');
+				}
+			})
+		})(Zepto)
+
+		$(function($){
+			$('body > *').fadeOut();
+		});
+	</script>
+</head>
+<body>
+	<h1>Teste 1</h1>
+	<h2>Teste 2</h2>
+	<h3>Teste 3</h3>
+</body>
+</html>
