@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<style type="text/css">
+		* { margin: 0; padding: 0; text-align: center; }
+		body { padding-top: 50px; }
+		h1 { height: 30px; font-size: 2em; }
+		button { margin-top: 50px; }
+	</style>
+	<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
+	<script>
+		;(function($){
+			$.extend($.fn, {
+				slideUp: function(){
+					this.css('overflow','hidden');
+					return this.animate({
+						height: '0'
+					}, 5000, 'linear');
+				}
+			})
+		})(Zepto)
+
+		$(function($){
+			$('button').click(function(){
+				$('h1').slideUp();
+			})
+		});
+	</script>
+</head>
+<body>
+	<h1>Teste 1</h1>
+	<h1>Teste 2</h1>
+	<h1>Teste 3</h1>
+	<button class="btn btn-danger">Estou falando sério, não clique!</button>
+</body>
+</html>
