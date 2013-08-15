@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<!--
+	Google HTML5 slide template
+
+	Authors: Luke Mahé (code)
+					 Marcin Wichary (code and design)
+
+					 Dominic Mazzoni (browser compatibility)
+					 Charles Chen (ChromeVox support)
+
+	URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>Something about the future of JS</title>
+
+		<meta charset="utf-8">
+		<script src="assets/scripts/slides.js"></script>
+	</head>
+
+	<body style="display: none">
+
+		<section class="slides layout-regular template-default">
+
+			<!-- Your slides (<article>s) go here. Delete or comment out the
+					 slides below. -->
+
+			<article class="start bg blue buzios">
+				<h1>Something about <br />the future of JS</h1>
+			</article>
+
+			<article>
+				<h1>Luiz Tiago</h1>
+				<img src="assets/slides/luiztiago.jpg" class="sd luiztiago" style="position: absolute; bottom: 50px; right: 50px;" />
+				<ul>
+					<li>CTO @ MGR Tecnologia </li>
+					<li>Pós-graduado em Desenvolvimento Mobile @ CESAR </li>
+					<li>Graduado em Sistemas para Internet @ Marista</li>
+					<li>Co-fundador do jQuery Brasil &amp; Pernambuco.JS </li>
+					<li>And more things...</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Como prever o futuro?</h1>
+				<ul class="build">
+					<li>Ler muito</li>
+					<li>Participar dos bons grupos e discussões</li>
+					<li>Ou virar Mãe Dinah<br />
+						<img src="assets/slides/maedinah.png" style="padding-top: 20px;" />
+						<img src="assets/slides/troll.png" style="position: absolute; right: 20px; bottom: 100px; transform: rotate(-25deg);" />
+					</li>
+				</ul>
+			</article>
+
+			<article class="iframe-with-title">
+				<h1>Problema real</h1>
+				<p>Consumir um search do twitter e montar uma lista com os últimos tweets.</p>
+				<div class="build">
+					<img src="assets/slides/twitter-search.png" style="position: absolute; padding-top: 40px; width: 700px;">
+					<img src="assets/slides/api-twitter.png" style="position: absolute; padding-top: 40px; width: 700px;">
+				</div>
+			</article>
+
+			<article>
+				<h1>Proposta 01</h1>
+				<ul class="build">
+					<li>Criar uma interface dos tweets usando alguma linguagem server-side para manipular os dados</li>
+					<li>Receber um html já formatado com todos os tweets</li>
+				</ul>
+				<pre>
+$.ajax({
+	url: 'api_url',
+	type: 'post',
+	dataType: 'html',
+	success: function (data) {
+		jQuery('#tweets').html(data);
+	}
+});
+				</pre>
+			</article>
+
+			<article>
+				<h1>Proposta 01 - Pontos positivos</h2>
+				<ul class="build">
+					<li>Quase não vai ser preciso manipular os dados com JS</li>
+					<li>
+						<small>(e isso é positivo?)</small>
+						<img src="assets/slides/ta-serto.jpg" style="position: absolute; bottom: 0;">
+					</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Proposta 01 - Pontos negativos</h2>
+				<ul class="build">
+					<li>Trafega conteúdo desnecessário<br /><small>(tags html, classes, id's do "template" sendo repetidos)</small></li>
+					<li>Uso server-side sem necessidade</li>
+					<li>Requests desnecessários</li>
+					<li>Pior manutenção do código</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Proposta 02</h1>
+				<ul class="build">
+					<li>Fazer o request para o json</li>
+					<li>Criar uma &lt;li&gt; de template</li>
+					<li>Usar $.clone() ou similar</li>
+					<li>Manipular os dados</li>
+				</ul>
+				<pre>
+$.ajax({
+	url: 'api_url',
+	type: 'post',
+	dataType: 'json',
+	success: function (data) {
+	    var tweets = data.tweets;
+	    $.each(){
+	        $('.template-tweet').clone();
+	        ...
+	    });
+	}
+});
+				</pre>
+			</article>
+
+			<article>
+				<h1>Proposta 02 - Pontos positivos</h2>
+				<ul class="build">
+					<li>Não precisa usar server-side</li>
+					<li>Não trafega conteúdo desnecessário</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Proposta 02 - Pontos negativos</h2>
+				<ul class="build">
+					<li>Maior consumo de memória</li>
+					<li>Uso de uma biblioteca apenas para isso</li>
+					<li>A <code>&lt;li&gt;</code> de template ficará acessível no DOM por completo mesmo estando com <code>display: none</code></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Web Components</h1>
+				<ul>
+					<li><a href="http://www.w3.org/TR/2013/WD-components-intro-20130606/">Link do draft</a></li>
+					<li>Atualizado em 6 Junho 2013</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Web Components</h1>
+				<ul>
+					<li><strong>HTML Templates</strong></li>
+					<li>Shadow DOM</li>
+					<li>Custom Elements</li>
+					<li>HTML5 Imports</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Proposta 03</h1>
+				<ul class="build">
+					<li>Fazer o request para o json</li>
+					<li>Criar um &lt;template&gt; _o/</li>
+					<li>Manipular os dados</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Proposta 03 - Pontos positivos</h2>
+				<ul class="build">
+					<li>Não precisa usar nada server-side</li>
+					<li>Não trafega conteúdo desnecessário</li>
+					<li>Não precisa de server-side</li>
+					<li>Apenas o template tem referência no DOM</li>
+					<li>Fica "escondido" do documento<br />
+					<small>Ex.: document.querySelector('#mytemplate h2') == null</small></li>
+					<li>Código é parseado mas não renderizado. Scripts não rodam, Stylesheets/images não são carregadas, media não é inicializada</li>
+					<li>Menor consumo de memória</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Proposta 03 - Pontos negativos</h2>
+				<ul class="build">
+					<li>Quando vamos poder usar?</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>FEED</h1>
+				<ul class="build">
+					<li>Quem lembra dela?<br />
+					<img src="assets/slides/feed.png" style="padding-top: 20px;"></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Tentativas</h1>
+				<div class="build">
+					<h3>Design</h3>
+					<p><img src="assets/slides/ant-design.gif" /></p>
+					<h3>IE</h3>
+					<p><img src="assets/slides/ant-ie.gif" /></p>
+					<p style="position: absolute; margin-top: -250px;"><img src="assets/slides/troll-ie6.png" /> <img src="assets/slides/meme-notie.gif" /></p>
+				</div>
+			</article>
+
+			<article>
+				<h1>Ant v0.1</h1>
+			</article>
+
+			<article>
+				<h1>Ambient Light Events</h1>
+				<ul class="build">
+					<li><a href="https://dvcs.w3.org/hg/dap/raw-file/default/light/Overview.html" target="_blank">Link do Draft</a><br />
+					<small>Atualizado em 29 de Maio de 2013</small></li>
+					<li>Detecta mudanças na iluminação do ambiente</li>
+					<li>Atualmente só o Firefox 22+ está dando suporte</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Ambient Light Events</h1>
+				<pre>
+window.addEventListener('devicelight', function(event) {
+	console.log(event.value);
+	// Retorna um inteiro de 0 a 10000 (lux)
+});
+				</pre>
+			</article>
+
+			<article>
+				<h1>Ant + Ambient Light Event</h1>
+				<h3>"Fear Ant"</h3>
+			</article>
+
+			<article>
+				<h1>
+					Como se manter atualizado?
+				</h1>
+				<ul class="build">
+					<li>Pernambuco.JS</li>
+					<li>Eventos BrazilJS / *.JS / FrontIn's</li>
+					<li>Grupos Facebook<br /><small>['Javascript Brasil', 'FrontEnd Brasil', 'HTML5 Brasil', '...']</small></li>
+					<li>Weekly's<br /><small>['BrazilJS', 'HTML5', 'Javascript', 'CSS3', '...']</small></li>
+				</ul>
+
+			</article>
+
+			<article class="pernambuco">
+				<h1>Obrigado, Pernambuco.JS!</h1>
+				<ul>
+					<li><a href="http://www.twitter.com/luiztiago">@luiztiago</a></li>
+					<li><a href="http://www.luiztiago.com">www.luiztiago.com</a></li>
+					<li><a href="mailto:luiztiago@luiztiago.com">luiztiago@luiztiago.com</a></li>
+				</ul>
+				<img src="assets/slides/pejs.png" style="position: absolute; bottom: 50px; right: 50px;" />
+			</article>
+
+		</section>
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Archivo+Narrow:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	</body>
+</html>
