@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<!--
+	Google HTML5 slide template
+
+	Authors: Luke Mahé (code)
+					 Marcin Wichary (code and design)
+
+					 Dominic Mazzoni (browser compatibility)
+					 Charles Chen (ChromeVox support)
+
+	URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>JS: Past, present and Future</title>
+
+		<meta charset="utf-8">
+
+		<meta property="og:title" content="Something about the future of JS"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="http://luiztiago.github.io/talks/2013/2nd-open-meeting-pernambucojs/"/>
+		<meta property="og:site_name" content="Something about the future of JS"/>
+		<meta property="og:image" content="http://luiztiago.github.io/talks/2013/2nd-open-meeting-pernambucojs/assets/slides/maedinah.png"/>
+
+		<script src="assets/scripts/slides.js"></script>
+	</head>
+
+	<body style="display: none">
+
+		<section class="slides layout-regular template-default">
+
+			<!-- Your slides (<article>s) go here. Delete or comment out the
+					 slides below. -->
+
+			<article class="start bg blue">
+				<h1>JavaScript<br /><span class="silver">Past, Present and Future</span></h1>
+			</article>
+
+			<article>
+				<h1>Luiz Tiago Oliveira</h1>
+				<img src="assets/slides/luiztiago.jpg" class="sd luiztiago" style="position: absolute; bottom: 50px; right: 50px;" />
+				<ul>
+					<li>CTO @ MGR Tecnologia </li>
+					<li>Pós-graduado em Desenvolvimento Mobile @ CESAR </li>
+					<li>Graduado em Sistemas para Internet @ Marista</li>
+					<li>Co-fundador do jQuery Brasil &amp; Pernambuco.JS </li>
+					<li>Organizador do Pernambuco.JS / Front in Recife</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Um pouco da história</h1>
+				<ul class="build">
+					<li>Foi criada inicialmente em 10 dias, em Maio de 1995 por <strong>Brendan Eich</strong>, quando trabalhava no Netscape</li>
+					<li>Não tem absolutamente <strong>nada haver</strong> com Java</li>
+					<li>Linguagem de programação <strong>interpretada</strong></li>
+					<li>Segundo a W3C, o nome foi uma jogada de marketing, pois o Java já se popularizava na época</li>
+				</ul>
+			</article>
+
+			<article class="brendan_summary"></article>
+
+			<article class="crise_identidade">
+				<h1>Crise de identidade</h1>
+				<ul class="build">
+					<li>May 95: <strong>Mocha</strong></li>
+					<li>Sep 95: <strong>LiveScript</strong></li>
+					<li>Dec 95: <strong>JavaScript</strong></li>
+					<li class="dark">A mudança de nome de <strong>LiveScript</strong> para <strong>JavaScript</strong> coincidiu com a época em que a Netscape adicionou suporte à tecnologia Java em seu navegador (Applets).</strong></li>
+				</ul>
+			</article>
+
+			<article class="dark timeline">
+				<h1>Um pouco mais do passado</h1>
+				<ul class="build">
+					<li>Em março de 1996 a Netscape Communications Corporation lançou o Navegador Netscape 2.0, com suporte para JavaScript.</li>
+					<li>Em agosto de 1995, a Microsoft desenvolveu uma linguagem semelhante, JSript, incluída no IE 3.0, em agosto de 1996.</li>
+					<li>A Netscape submeteu as especificações do JavaScript para padronização pela Ecma International;</li>
+					<li>E foi aí que a brincadeira começou, ECMAScript :)</li>
+				</ul>
+			</article>
+
+			<article class="timeline tiririca">
+				<h1>JS servia pra quê?</h1>
+				<ul class="build">
+					<li>Validação de formulário</li>
+					<li>Fazer as coisas se moverem na tela</li>
+					<li>Efeitos que o FrontPage fazia e ninguém sabia como</li>
+					<li>Efeitos usados no jQuery e em outras bibliotecas</li>
+				</ul>
+			</article>
+
+			<article class="from_hell"></article>
+
+			<article class="dark timeline">
+				<h1>Developer's Timeline</h1>
+			</article>
+
+			<article class="timeline-1"></article>
+			<article class="timeline-2"></article>
+			<article class="timeline-3"></article>
+			<article class="timeline-4"></article>
+			<article class="timeline-5"></article>
+			<article class="timeline-6"></article>
+			<article class="timeline-7"></article>
+
+			<article>
+				<h1>Tutorial como passar seu site para HTML5</h1>
+				<ul class="build">
+					<li>Substitua a primeira linha do seu HTML que deve ser esta:</li>
+					<li class="dark">
+						&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+					</li>
+					<li>Por esta:</li>
+					<li class="dark">
+						&lt;!DOCTYPE html&gt;
+					</li>
+					<li><strong>Pronto!</strong></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>O que é HTML5 sem JavaScript?</h1>
+				<ul class="build">
+					<li>Novas tags semânticas</li>
+					<li>...?</li>
+					<li>Varias APIs novas que são manipuladas com <strong>JavaScript</strong></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Mitos</h1>
+				<ul class="build">
+					<li>"JavaScript é inseguro, o código é acessível pelo cliente"</li>
+					<li>"JavaScript é muito limitado, só trabalha dentro de uma sandbox (navegador)"</li>
+					<li>"JavaScript só serve para Web"</li>
+					<li>"Javascript definitivamente não presta em baixo nivel"</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Node.JS</h1>
+				<iframe src="http://nodejs.org/" frameborder="0" style="height: 500px;"></iframe>
+			</article>
+
+			<article>
+				<h1>NodeOS</h1>
+				<iframe src="http://nodeos.github.io/" frameborder="0" style="height: 500px;"></iframe>
+			</article>
+
+			<article>
+				<h1>appjs</h1>
+				<iframe src="http://appjs.com/" frameborder="0" style="height: 500px;"></iframe>
+			</article>
+
+			<article>
+				<h1>Phonegap</h1>
+				<iframe src="http://phonegap.com/" frameborder="0" style="height: 500px;"></iframe>
+			</article>
+
+			<article class="dark firefoxos">
+				<h1>Firefox OS</h1>
+			</article>
+
+			<article>
+				<h1>noduino</h1>
+				<iframe src="http://semu.github.io/noduino/" frameborder="0" style="height: 500px;"></iframe>
+			</article>
+
+			<article>
+				<h1>tracking.js</h1>
+				<iframe src="http://trackingjs.com/" frameborder="0" style="height: 500px;"></iframe>
+			</article>
+
+			<article>
+				<h1>FEED</h1>
+				<ul class="build">
+					<li>Alguém conhece o mascote?<br />
+					<img src="assets/slides/feed.png" style="padding-top: 20px;"></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Tentativas</h1>
+				<div class="build">
+					<h3>Design</h3>
+					<p><img src="assets/slides/ant-design.gif" /></p>
+					<h3>IE</h3>
+					<p><img src="assets/slides/ant-ie.gif" /></p>
+					<p style="position: absolute; margin-top: -250px;"><img src="assets/slides/troll-ie6.png" /> <img src="assets/slides/meme-notie.gif" /></p>
+				</div>
+			</article>
+
+			<article>
+				<h1>Ant v0.1</h1>
+			</article>
+
+			<article>
+				<h1>Ambient Light Events</h1>
+				<ul class="build">
+					<li><a href="https://dvcs.w3.org/hg/dap/raw-file/default/light/Overview.html" target="_blank">Link do Draft</a><br />
+					<small>Atualizado em 29 de Maio de 2013</small></li>
+					<li>Detecta mudanças na iluminação do ambiente</li>
+					<li>Atualmente só o Firefox 22+ está dando suporte</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Ambient Light Events</h1>
+				<pre>
+window.addEventListener('devicelight', function(event) {
+	console.log(event.value);
+	// Retorna um inteiro de 0 a 10000 (lux)
+});
+				</pre>
+			</article>
+
+			<article>
+				<h1>Ant + Ambient Light Event</h1>
+				<h3>"Fear Ant"</h3>
+				<ul>
+					<li><a href="http://github.com/luiztiago/fear-ant">http://github.com/luiztiago/fear-ant</a></li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>Github Top Languages</h1>
+				<p><img src="assets/slides/top-languages.png"></p>
+			</article>
+
+			<article>
+				<h1>Como prever o futuro?</h1>
+				<ul class="build">
+					<li>Ler muito</li>
+					<li>Participar dos bons grupos e discussões</li>
+					<li>Ou virar Mãe Dinah<br />
+						<img src="assets/slides/maedinah.png" style="padding-top: 20px;" />
+						<img src="assets/slides/troll.png" style="position: absolute; right: 20px; bottom: 100px; transform: rotate(-25deg);" />
+					</li>
+				</ul>
+			</article>
+
+			<article>
+				<h1>
+					Como se manter atualizado?
+				</h1>
+				<ul class="build">
+					<li>Pernambuco.JS</li>
+					<li>Eventos BrazilJS / *.JS / FrontIn's</li>
+					<li>Grupos Facebook<br /><small>['Javascript Brasil', 'FrontEnd Brasil', 'HTML5 Brasil', '...']</small></li>
+					<li>Weekly's<br /><small>['BrazilJS', 'HTML5', 'Javascript', 'CSS3', '...']</small></li>
+				</ul>
+
+			</article>
+
+			<article class="dark aeso">
+				<h1>Obrigado, AESO!</h1>
+				<ul>
+					<li><a href="http://www.twitter.com/luiztiago">@luiztiago</a></li>
+					<li><a href="http://www.luiztiago.com">www.luiztiago.com</a></li>
+					<li><a href="mailto:luiztiago@luiztiago.com">luiztiago@luiztiago.com</a></li>
+				</ul>
+			</article>
+
+		</section>
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Archivo+Narrow:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	</body>
+</html>
