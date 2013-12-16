@@ -10,7 +10,7 @@
 	URL: http://code.google.com/p/html5slides/
 */
 
-var PERMANENT_URL_PREFIX = 'http://luiztiago.github.com/talks/2012/1st-open-meeting-pernambucojs/';
+var PERMANENT_URL_PREFIX = 'http://luiztiago.github.com/talks/2012/FrontInMaceio-ZeptoJS/';
 
 var SLIDE_CLASSES = ['far-past', 'past', 'current', 'next', 'far-next'];
 
